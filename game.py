@@ -25,6 +25,9 @@ class Game:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     running = False
+                if event.type == pygame.MOUSEBUTTONDOWN:
+                    position = pygame.mouse.get_pos()
+                    self.handleClick(position)
             self.draw()
             pygame.display.flip()
         pygame.quit()
@@ -49,5 +52,15 @@ class Game:
             self.images[fileName.split(".")[0]] = image
 
     def getImage(self, piece: Piece):
-        string = "unclicked-bomb" if piece.getHasBomb() else str(piece.getNumAround())
+        string = None
+        if (piece.getClicked()):
+            pass
+        else:
+            string = "empty-block"
         return self.images[string]
+
+        #string = "unclicked-bomb" if piece.getHasBomb() else str(piece.getNumAround())
+
+    def handleClick(self, position):
+        index = position[1] // self.pieceSize[1], position[0] // self.pieceSize[0]
+        print(index)
