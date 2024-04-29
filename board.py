@@ -8,6 +8,10 @@ class Board:
     def __init__(self, size: Tuple[int, int], prob: float):
         self.size = size
         self.prob = prob
+        self.lost = False
+
+        self.numClicked = 0
+        self.numNonBombs = 0
         self.setBoard()
 
     def setBoard(self):
@@ -16,6 +20,8 @@ class Board:
             row = []
             for col in range(self.size[1]):
                 hasBomb = random() < self.prob
+                if (not hasBomb):
+                    self.numNonBombs += 1
                 piece = Piece(hasBomb)
                 row.append(piece)
             self.board.append(row)
@@ -50,3 +56,19 @@ class Board:
         if (flag):
             piece.toggleFlag()
             return
+        piece.click()
+        if (piece.getHasBomb()):
+            self.lost = True
+            return
+        self.numClicked += 1
+        if (piece.getNumAround() != 0):
+            return
+        for neighbor in piece.getNeighbors():
+            if (not neighbor.getHasBomb() and not neighbor.getClicked()):
+               self.handleClick(neighbor,False)
+
+
+    def getLost(self):
+        self.lost
+    def getWon(self):
+        return self.numNonBombs == self.numClicked

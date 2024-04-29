@@ -28,3 +28,9 @@ class Piece:
 
     def toggleFlag(self):
         self.flagged = not self.flagged
+
+    def click(self):
+        self.clicked = True
+
+    def getNeighbors(self):
+        return self.neighbors
