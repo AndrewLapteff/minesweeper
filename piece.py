@@ -16,10 +16,15 @@ class Piece:
     def setNeighbors(self, neighbors):
         self.neighbors = neighbors
         self.setNumAround()
+
     def setNumAround(self):
         self.numAround = 0
         for piece in self.neighbors:
             if(piece.getHasBomb()):
                 self.numAround += 1
+
     def getNumAround(self):
         return self.numAround
+
+    def toggleFlag(self):
+        self.flagged = not self.flagged

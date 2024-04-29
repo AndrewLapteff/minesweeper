@@ -43,3 +43,10 @@ class Board:
 
     def getPiece(self, index: Tuple[int, int]):
         return self.board[index[0]][index[1]]
+
+    def handleClick(self, piece, flag):
+        if(piece.getClicked() or (not flag and piece.getFlagged())):
+             return
+        if (flag):
+            piece.toggleFlag()
+            return
