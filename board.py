@@ -23,7 +23,7 @@ class Board:
 
     def setNeighbors(self):
         for row in range(self.size[0]):
-            for col in range(self.size[0]):
+            for col in range(self.size[1]):
                 piece = self.getPiece((row, col))
                 neighbors = self.getListOfNeighbors((row, col))
                 piece.setNeighbors(neighbors)
@@ -34,11 +34,10 @@ class Board:
             for col in range(index[1] - 1, index[1] + 2):
                 outOfBounds = row < 0 or row >= self.size[0] or col < 0 or col >= self.size[1]
                 same = row == index[0] and col == index[1]
-                if (same or outOfBounds):
+                if same or outOfBounds:
                     continue
                 neighbors.append(self.getPiece((row, col)))
-            return neighbors
-
+        return neighbors
     def getSize(self) -> Tuple[int, int]:
         return self.size
 
