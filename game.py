@@ -36,6 +36,11 @@ class Game:
                 sound.play()
                 sleep(3)
                 running = False
+            if (self.board.getLost()):
+                sound = pygame.mixer.Sound("lose.wav")
+                sound.play()
+                sleep(2)
+                running = False
         pygame.quit()
 
     def draw(self):
