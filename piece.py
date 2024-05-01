@@ -3,6 +3,7 @@ class Piece:
         self.hasBomb = hasBomb
         self.clicked = False
         self.flagged = False
+        self.numAround = 0
 
     def getHasBomb(self):
         return self.hasBomb
@@ -18,7 +19,7 @@ class Piece:
         self.setNumAround()
 
     def setNumAround(self):
-        self.numAround = 0
+
         for piece in self.neighbors:
             if(piece.getHasBomb()):
                 self.numAround += 1

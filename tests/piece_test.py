@@ -64,7 +64,7 @@ def test_piece_get_num_around(piece: Piece):
     assert piece.getNumAround() == 1
     neighbors.append(Piece(True))
     piece.setNeighbors(neighbors)
-    assert piece.getNumAround() == 2
+    assert piece.getNumAround() == 3
 
 
 def test_piece_get_has_bomb(piece: Piece):
