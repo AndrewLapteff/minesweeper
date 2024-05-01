@@ -21,9 +21,10 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install pytest
+        pip install pytest-html  # Додано плагін pytest-html для створення HTML звіту
         pip install pygame
         # If you have a requirements.txt file, uncomment the following line:
         # pip install -r requirements.txt
-    - name: Run tests
+    - name: Run tests and generate HTML report
       run: |
-        pytest tests/
+        pytest tests/ --html=report.html
