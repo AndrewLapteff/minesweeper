@@ -1,11 +1,12 @@
 import os
+from time import sleep
 from typing import Tuple
 
 import pygame
 
 from board import Board
 from piece import Piece
-from time import sleep
+
 
 class Game:
     def __init__(self, board: Board, screenSize: Tuple[int, int]):
@@ -16,10 +17,10 @@ class Game:
             self.screenSize[1] // self.board.getSize()[0],
         )
         self.loadImages()
+        self.screen = pygame.display.set_mode(self.screenSize)
 
     def run(self):
         pygame.init()
-        self.screen = pygame.display.set_mode(self.screenSize)
         running = True
         while running:
             for event in pygame.event.get():
@@ -31,12 +32,12 @@ class Game:
                     self.handleClick(position, rightClick)
             self.draw()
             pygame.display.flip()
-            if (self.board.getWon()):
+            if self.board.getWon():
                 sound = pygame.mixer.Sound("win.wav")
                 sound.play()
                 sleep(3)
                 running = False
-            if (self.board.getLost()):
+            if self.board.getLost():
                 sound = pygame.mixer.Sound("lose.wav")
                 sound.play()
                 sleep(2)
@@ -64,16 +65,20 @@ class Game:
 
     def getImage(self, piece: Piece):
         string = None
-        if (piece.getClicked()):
-            string = "bomb-at-clicked-block" if piece.getHasBomb() else str(piece.getNumAround())
+        if piece.getClicked():
+            string = (
+                "bomb-at-clicked-block"
+                if piece.getHasBomb()
+                else str(piece.getNumAround())
+            )
         else:
             string = "flag" if piece.getFlagged() else "empty-block"
         return self.images[string]
 
-        #string = "unclicked-bomb" if piece.getHasBomb() else str(piece.getNumAround())
+        # string = "unclicked-bomb" if piece.getHasBomb() else str(piece.getNumAround())
 
-    def handleClick(self, position,rightClick):
-        if(self.board.getLost()):
+    def handleClick(self, position, rightClick):
+        if self.board.getLost():
             return
         index = position[1] // self.pieceSize[1], position[0] // self.pieceSize[0]
         piece = self.board.getPiece(index)
