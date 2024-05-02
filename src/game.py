@@ -9,7 +9,30 @@ from piece import Piece
 
 
 class Game:
+    """
+    Атрибути:
+     board (Board): ігрова дошка
+     screenSize (Tuple[int, int]): розмір екрану
+     pieceSize (Tuple[int, int]): розмір одного елементу на дошці
+     screen (pygame.Surface): поверхня для відображення гри
+
+    Методи:
+     __init__(self, board: Board, screenSize: Tuple[int, int]): конструктор класу
+     run(self): запускає гру
+     draw(self): відображає стан гри на екрані
+     loadImages(self): завантажує зображення для елементів гри
+     getImage(self, piece: Piece): повертає зображення для заданого елементу
+     handleClick(self, position, rightClick): обробляє клік користувача
+    """
+
     def __init__(self, board: Board, screenSize: Tuple[int, int]):
+        """
+        Ініціалізує об'єкт гри.
+
+        Параметри:
+        - board (Board): ігрова дошка
+        - screenSize (Tuple[int, int]): розмір екрану
+        """
         self.board = board
         self.screenSize = screenSize
         self.pieceSize = (
@@ -19,7 +42,10 @@ class Game:
         self.loadImages()
         self.screen = pygame.display.set_mode(self.screenSize)
 
-    def run(self):
+    def run(self) -> None:
+        """
+        Запускає гру.
+        """
         pygame.init()
         running = True
         while running:
@@ -44,7 +70,10 @@ class Game:
                 running = False
         pygame.quit()
 
-    def draw(self):
+    def draw(self) -> None:
+        """
+        Відображає стан гри на екрані.
+        """
         topLeft = (0, 0)
         for row in range(self.board.getSize()[0]):
             for col in range(self.board.getSize()[1]):
@@ -54,7 +83,10 @@ class Game:
                 topLeft = topLeft[0] + self.pieceSize[0], topLeft[1]
             topLeft = 0, topLeft[1] + self.pieceSize[1]
 
-    def loadImages(self):
+    def loadImages(self) -> None:
+        """
+        Завантажує зображення для елементів гри.
+        """
         self.images = {}
         for fileName in os.listdir("images"):
             if not fileName.endswith(".png"):
@@ -64,6 +96,15 @@ class Game:
             self.images[fileName.split(".")[0]] = image
 
     def getImage(self, piece: Piece):
+        """
+        Повертає зображення для заданого елементу.
+
+        Параметри:
+        - piece (Piece): елемент гри
+
+        Повертає:
+        - pygame.Surface: зображення для елементу
+        """
         string = None
         if piece.getClicked():
             string = (
@@ -75,9 +116,14 @@ class Game:
             string = "flag" if piece.getFlagged() else "empty-block"
         return self.images[string]
 
-        # string = "unclicked-bomb" if piece.getHasBomb() else str(piece.getNumAround())
+    def handleClick(self, position, rightClick) -> None:
+        """
+        Обробляє клік користувача.
 
-    def handleClick(self, position, rightClick):
+        Параметри:
+        - position: позиція кліку
+        - rightClick: чи був клік правою кнопкою миші
+        """
         if self.board.getLost():
             return
         index = position[1] // self.pieceSize[1], position[0] // self.pieceSize[0]
