@@ -83,7 +83,7 @@
                class="code sev- "><tt><i>22</i>                 <span class="n">hasBomb</span> <span class="o">=</span> <span class="n">random</span><span class="p">()</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">prob</span></tt>
             </div>
             <div id="l23"
-               class="code sev- "><tt><i>23</i>                 <span class="k">if</span> <span class="p">(</span><span class="ow">not</span> <span class="n">hasBomb</span><span class="p">):</span></tt>
+               class="code sev- "><tt><i>23</i>                 <span class="k">if</span> <span class="ow">not</span> <span class="n">hasBomb</span><span class="p">:</span></tt>
             </div>
             <div id="l24"
                class="code sev- "><tt><i>24</i>                     <span class="bp">self</span><span class="o">.</span><span class="n">numNonBombs</span> <span class="o">+=</span> <span class="mi">1</span></tt>
@@ -137,6 +137,9 @@
                class="code sev- "><tt><i>40</i>             <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">index</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">index</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="mi">2</span><span class="p">):</span></tt>
             </div>
             <div id="l41"
+               class="code sev- "><tt><i>41</i>                 <span class="n">outOfBounds</span> <span class="o">=</span> <span class="p">(</span></tt>
+            </div>
+            <div id="l42"
                class="code sev-2  le">
                <ul class="violations">
                
@@ -144,183 +147,114 @@
                      <span class="count sev-2">
                         E501
                      </span>
-                     Line too long (94 > 79 characters)</li>
+                     Line too long (84 > 79 characters)</li>
                
-               </ul><tt><i>41</i>                 <span class="n">outOfBounds</span> <span class="o">=</span> <span class="n">row</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">row</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">size</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">or</span> <span class="n">col</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">col</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">size</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span></tt>
-            </div>
-            <div id="l42"
-               class="code sev- "><tt><i>42</i>                 <span class="n">same</span> <span class="o">=</span> <span class="n">row</span> <span class="o">==</span> <span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">and</span> <span class="n">col</span> <span class="o">==</span> <span class="n">index</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span></tt>
+               </ul><tt><i>42</i>                     <span class="n">row</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">row</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">size</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">or</span> <span class="n">col</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">col</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">size</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span></tt>
             </div>
             <div id="l43"
-               class="code sev- "><tt><i>43</i>                 <span class="k">if</span> <span class="n">same</span> <span class="ow">or</span> <span class="n">outOfBounds</span><span class="p">:</span></tt>
+               class="code sev- "><tt><i>43</i>                 <span class="p">)</span></tt>
             </div>
             <div id="l44"
-               class="code sev- "><tt><i>44</i>                     <span class="k">continue</span></tt>
+               class="code sev- "><tt><i>44</i>                 <span class="n">same</span> <span class="o">=</span> <span class="n">row</span> <span class="o">==</span> <span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">and</span> <span class="n">col</span> <span class="o">==</span> <span class="n">index</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span></tt>
             </div>
             <div id="l45"
-               class="code sev- "><tt><i>45</i>                 <span class="n">neighbors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">getPiece</span><span class="p">((</span><span class="n">row</span><span class="p">,</span> <span class="n">col</span><span class="p">)))</span></tt>
+               class="code sev- "><tt><i>45</i>                 <span class="k">if</span> <span class="n">same</span> <span class="ow">or</span> <span class="n">outOfBounds</span><span class="p">:</span></tt>
             </div>
             <div id="l46"
-               class="code sev- "><tt><i>46</i>         <span class="k">return</span> <span class="n">neighbors</span></tt>
+               class="code sev- "><tt><i>46</i>                     <span class="k">continue</span></tt>
             </div>
             <div id="l47"
-               class="code sev-2  le">
-               <ul class="violations">
-               
-                  <li>
-                     <span class="count sev-2">
-                        E301
-                     </span>
-                     Expected 1 blank line, found 0</li>
-               
-               </ul><tt><i>47</i>     <span class="k">def</span> <span class="nf">getSize</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]:</span></tt>
+               class="code sev- "><tt><i>47</i>                 <span class="n">neighbors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">getPiece</span><span class="p">((</span><span class="n">row</span><span class="p">,</span> <span class="n">col</span><span class="p">)))</span></tt>
             </div>
             <div id="l48"
-               class="code sev- "><tt><i>48</i>         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">size</span></tt>
+               class="code sev- "><tt><i>48</i>         <span class="k">return</span> <span class="n">neighbors</span></tt>
             </div>
             <div id="l49"
                class="code sev- "><tt><i>49</i> &nbsp;</tt>
             </div>
             <div id="l50"
-               class="code sev- "><tt><i>50</i>     <span class="k">def</span> <span class="nf">getPiece</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]):</span></tt>
+               class="code sev- "><tt><i>50</i>     <span class="k">def</span> <span class="nf">getSize</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]:</span></tt>
             </div>
             <div id="l51"
-               class="code sev- "><tt><i>51</i>         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">board</span><span class="p">[</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">]][</span><span class="n">index</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span></tt>
+               class="code sev- "><tt><i>51</i>         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">size</span></tt>
             </div>
             <div id="l52"
                class="code sev- "><tt><i>52</i> &nbsp;</tt>
             </div>
             <div id="l53"
-               class="code sev- "><tt><i>53</i>     <span class="k">def</span> <span class="nf">handleClick</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">piece</span><span class="p">,</span> <span class="n">flag</span><span class="p">):</span></tt>
+               class="code sev- "><tt><i>53</i>     <span class="k">def</span> <span class="nf">getPiece</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]):</span></tt>
             </div>
             <div id="l54"
-               class="code sev-2  le">
-               <ul class="violations">
-               
-                  <li>
-                     <span class="count sev-2">
-                        E275
-                     </span>
-                     Missing whitespace after keyword</li>
-               
-               </ul><tt><i>54</i>         <span class="k">if</span><span class="p">(</span><span class="n">piece</span><span class="o">.</span><span class="n">getClicked</span><span class="p">()</span> <span class="ow">or</span> <span class="p">(</span><span class="ow">not</span> <span class="n">flag</span> <span class="ow">and</span> <span class="n">piece</span><span class="o">.</span><span class="n">getFlagged</span><span class="p">())):</span></tt>
+               class="code sev- "><tt><i>54</i>         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">board</span><span class="p">[</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">]][</span><span class="n">index</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span></tt>
             </div>
             <div id="l55"
-               class="code sev-2  le">
-               <ul class="violations">
-               
-                  <li>
-                     <span class="count sev-2">
-                        E111
-                     </span>
-                     Indentation is not a multiple of 4</li>
-               
-                  <li>
-                     <span class="count sev-2">
-                        E117
-                     </span>
-                     Over-indented</li>
-               
-               </ul><tt><i>55</i>              <span class="k">return</span></tt>
+               class="code sev- "><tt><i>55</i> &nbsp;</tt>
             </div>
             <div id="l56"
-               class="code sev- "><tt><i>56</i>         <span class="k">if</span> <span class="p">(</span><span class="n">flag</span><span class="p">):</span></tt>
+               class="code sev- "><tt><i>56</i>     <span class="k">def</span> <span class="nf">handleClick</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">piece</span><span class="p">,</span> <span class="n">flag</span><span class="p">):</span></tt>
             </div>
             <div id="l57"
-               class="code sev- "><tt><i>57</i>             <span class="n">piece</span><span class="o">.</span><span class="n">toggleFlag</span><span class="p">()</span></tt>
+               class="code sev- "><tt><i>57</i>         <span class="k">if</span> <span class="n">piece</span><span class="o">.</span><span class="n">getClicked</span><span class="p">()</span> <span class="ow">or</span> <span class="p">(</span><span class="ow">not</span> <span class="n">flag</span> <span class="ow">and</span> <span class="n">piece</span><span class="o">.</span><span class="n">getFlagged</span><span class="p">()):</span></tt>
             </div>
             <div id="l58"
                class="code sev- "><tt><i>58</i>             <span class="k">return</span></tt>
             </div>
             <div id="l59"
-               class="code sev- "><tt><i>59</i>         <span class="n">piece</span><span class="o">.</span><span class="n">click</span><span class="p">()</span></tt>
+               class="code sev- "><tt><i>59</i>         <span class="k">if</span> <span class="n">flag</span><span class="p">:</span></tt>
             </div>
             <div id="l60"
-               class="code sev- "><tt><i>60</i>         <span class="k">if</span> <span class="p">(</span><span class="n">piece</span><span class="o">.</span><span class="n">getHasBomb</span><span class="p">()):</span></tt>
+               class="code sev- "><tt><i>60</i>             <span class="n">piece</span><span class="o">.</span><span class="n">toggleFlag</span><span class="p">()</span></tt>
             </div>
             <div id="l61"
-               class="code sev- "><tt><i>61</i>             <span class="bp">self</span><span class="o">.</span><span class="n">lost</span> <span class="o">=</span> <span class="kc">True</span></tt>
+               class="code sev- "><tt><i>61</i>             <span class="k">return</span></tt>
             </div>
             <div id="l62"
-               class="code sev- "><tt><i>62</i>             <span class="k">return</span></tt>
+               class="code sev- "><tt><i>62</i>         <span class="n">piece</span><span class="o">.</span><span class="n">click</span><span class="p">()</span></tt>
             </div>
             <div id="l63"
-               class="code sev- "><tt><i>63</i>         <span class="bp">self</span><span class="o">.</span><span class="n">numClicked</span> <span class="o">+=</span> <span class="mi">1</span></tt>
+               class="code sev- "><tt><i>63</i>         <span class="k">if</span> <span class="n">piece</span><span class="o">.</span><span class="n">getHasBomb</span><span class="p">():</span></tt>
             </div>
             <div id="l64"
-               class="code sev- "><tt><i>64</i>         <span class="k">if</span> <span class="p">(</span><span class="n">piece</span><span class="o">.</span><span class="n">getNumAround</span><span class="p">()</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">):</span></tt>
+               class="code sev- "><tt><i>64</i>             <span class="bp">self</span><span class="o">.</span><span class="n">lost</span> <span class="o">=</span> <span class="kc">True</span></tt>
             </div>
             <div id="l65"
                class="code sev- "><tt><i>65</i>             <span class="k">return</span></tt>
             </div>
             <div id="l66"
-               class="code sev- "><tt><i>66</i>         <span class="k">for</span> <span class="n">neighbor</span> <span class="ow">in</span> <span class="n">piece</span><span class="o">.</span><span class="n">getNeighbors</span><span class="p">():</span></tt>
+               class="code sev- "><tt><i>66</i>         <span class="bp">self</span><span class="o">.</span><span class="n">numClicked</span> <span class="o">+=</span> <span class="mi">1</span></tt>
             </div>
             <div id="l67"
-               class="code sev- "><tt><i>67</i>             <span class="k">if</span> <span class="p">(</span><span class="ow">not</span> <span class="n">neighbor</span><span class="o">.</span><span class="n">getHasBomb</span><span class="p">()</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">neighbor</span><span class="o">.</span><span class="n">getClicked</span><span class="p">()):</span></tt>
+               class="code sev- "><tt><i>67</i>         <span class="k">if</span> <span class="n">piece</span><span class="o">.</span><span class="n">getNumAround</span><span class="p">()</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span></tt>
             </div>
             <div id="l68"
-               class="code sev-2  le">
-               <ul class="violations">
-               
-                  <li>
-                     <span class="count sev-2">
-                        E111
-                     </span>
-                     Indentation is not a multiple of 4</li>
-               
-                  <li>
-                     <span class="count sev-2">
-                        E231
-                     </span>
-                     Missing whitespace after ','</li>
-               
-               </ul><tt><i>68</i>                <span class="bp">self</span><span class="o">.</span><span class="n">handleClick</span><span class="p">(</span><span class="n">neighbor</span><span class="p">,</span><span class="kc">False</span><span class="p">)</span></tt>
+               class="code sev- "><tt><i>68</i>             <span class="k">return</span></tt>
             </div>
             <div id="l69"
-               class="code sev- "><tt><i>69</i> &nbsp;</tt>
+               class="code sev- "><tt><i>69</i>         <span class="k">for</span> <span class="n">neighbor</span> <span class="ow">in</span> <span class="n">piece</span><span class="o">.</span><span class="n">getNeighbors</span><span class="p">():</span></tt>
             </div>
             <div id="l70"
-               class="code sev- "><tt><i>70</i> &nbsp;</tt>
+               class="code sev- "><tt><i>70</i>             <span class="k">if</span> <span class="ow">not</span> <span class="n">neighbor</span><span class="o">.</span><span class="n">getHasBomb</span><span class="p">()</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">neighbor</span><span class="o">.</span><span class="n">getClicked</span><span class="p">():</span></tt>
             </div>
             <div id="l71"
-               class="code sev-2  le">
-               <ul class="violations">
-               
-                  <li>
-                     <span class="count sev-2">
-                        E303
-                     </span>
-                     Too many blank lines (2)</li>
-               
-               </ul><tt><i>71</i>     <span class="k">def</span> <span class="nf">getLost</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span></tt>
+               class="code sev- "><tt><i>71</i>                 <span class="bp">self</span><span class="o">.</span><span class="n">handleClick</span><span class="p">(</span><span class="n">neighbor</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span></tt>
             </div>
             <div id="l72"
-               class="code sev- "><tt><i>72</i>         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">lost</span></tt>
+               class="code sev- "><tt><i>72</i> &nbsp;</tt>
             </div>
             <div id="l73"
-               class="code sev-2  le">
-               <ul class="violations">
-               
-                  <li>
-                     <span class="count sev-2">
-                        E301
-                     </span>
-                     Expected 1 blank line, found 0</li>
-               
-               </ul><tt><i>73</i>     <span class="k">def</span> <span class="nf">getWon</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span></tt>
+               class="code sev- "><tt><i>73</i>     <span class="k">def</span> <span class="nf">getLost</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span></tt>
             </div>
             <div id="l74"
-               class="code sev-2  le">
-               <ul class="violations">
-               
-                  <li>
-                     <span class="count sev-2">
-                        W292
-                     </span>
-                     No newline at end of file</li>
-               
-               </ul><tt><i>74</i>         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">numNonBombs</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">numClicked</span></tt>
+               class="code sev- "><tt><i>74</i>         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">lost</span></tt>
+            </div>
+            <div id="l75"
+               class="code sev- "><tt><i>75</i> &nbsp;</tt>
+            </div>
+            <div id="l76"
+               class="code sev- "><tt><i>76</i>     <span class="k">def</span> <span class="nf">getWon</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span></tt>
+            </div>
+            <div id="l77"
+               class="code sev- "><tt><i>77</i>         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">numNonBombs</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">numClicked</span></tt>
             </div>
             
          </div>

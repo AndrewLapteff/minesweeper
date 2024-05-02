@@ -1,5 +1,8 @@
+import sys
+
 import pytest
 
+sys.path.append("src")
 from piece import Piece
 
 
