@@ -2,9 +2,8 @@ import sys
 
 import pytest
 
-sys.path.append("src")
-from board import Board
-from game import Game
+from src.board import Board
+from src.game import Game
 
 
 @pytest.fixture

@@ -4,8 +4,8 @@ import pytest
 
 sys.path.append("src")
 
-from board import Board
 from piece import Piece
+from src.board import Board
 
 
 @pytest.fixture
